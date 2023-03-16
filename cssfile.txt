@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+$muted-red: #db3846;
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+fieldset {
+  border: none;
+}
+
+.radio-wrapper {
+  margin: 0.5rem 0;
+}
+
+input[type="radio"] {
+  opacity: 0;
+  
+  + label {
+    position: relative;
+    cursor: pointer;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      
+      /* Fixed alignment in some browsers. */
+      top: 0;
+      
+      border-radius: 50%;
+      border: 1px solid #6F686A;
+      width: 18px;
+      height: 18px;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 4px;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+    }
+  }
+  
+  &:checked {
+    + label::after {
+      background: $muted-red;
+      
+      /* The background is removed in Windows high-contrast mode, so we
+         need to set it explicitly here. `WindowText` is a system color
+         that should work with whatever high contrast mode the user
+         has set. */
+      @media screen and (-ms-high-contrast: active) {
+        & {
+          background: WindowText;
+        }
+      }
+    }
+  }
+  
+  &:focus {
+    + label::before {
+      /* The first box shadow makes the border thicker without
+         moving the UI (like border-width would). */
+      box-shadow: 0 0px 0px 1px #6F686A, 0 0px 8px $muted-red;
+      
+      /* Since box shadows don't show up in high contrast mode,
+         we're adding a transparent outline (which does show up). */
+      outline: 2px dotted transparent;
+    }
+  }
+}

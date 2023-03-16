@@ -1,11 +1,78 @@
 .App {
-  text-align: center;
+  text-align: left;
+  width: 80%;
+  padding: 1rem;
+  line-height: 30px;
+}
+
+/* * {
+  padding: 10px;
+  margin: 10px;
+} */
+
+/* *:focus-visible {
+  border: 5px solid red;
+} */
+
+input[type="text"] {
+  width: 300px;
+  margin: 5px;
+  height: 20px;
+  border: 1px solid gray;
+
+}
+
+.trap {
+  border: 1px solid #ccc;
+  padding: 1em 2em;
+}
+
+.trap.is-active {
+  background: #FEE9FF;
+}
+
+dialog {
+  border-radius: 10px;
+  border: 2px solid red;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
+.modal {
+  position: fixed;
+  background-color: #d5d9e1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.modal-content {
+  width: 500px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.modal-header,
+.modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  border-bottom: 1px solid #eee;
+}
+
+.modal-btn {
+  margin: 5px;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -32,6 +99,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
