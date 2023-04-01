@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import FocusTrap from 'focus-trap-react'
+// import FormE from './components/FormE';
+// import FormS from './components/FormS';
+// import FormC from './components/FormC';
+// import FormF2 from './components/FormF2';
+// import FormF from './components/FormF';
+// import DemoOne from './components/FormD';
+// import FormA from './components/FormA'
+// import FormB from './components/FormB'
+// import FlavorForm from "./components/test1";
 
 const FormA = () => {
 
@@ -11,6 +20,7 @@ const FormA = () => {
     }
     const [values, setValues] = useState(initialValues);
     const [popUp, setPopUp] = useState(false);
+    // const [formSubmit, setFormSubmit] = useState(false)
 
     const handleChange = (event) => {
         setValues({
@@ -21,6 +31,7 @@ const FormA = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // console.log("Submit called: ", typeof (values));
         mountTrap();
         setPopUp(!popUp)
     }
@@ -32,12 +43,15 @@ const FormA = () => {
     }
 
     const onClickYes = () => {
-        console.log("Submitted values: ", values);
+        // console.log("Clicked on Yes: ", values);
+        console.log(values);
         unmountTrap();
         setPopUp(false);
+        // setFormSubmit(true);
     }
 
     const onClose = () => {
+        // console.log("Closed");
         unmountTrap();
         setPopUp(false);
     }
@@ -47,15 +61,18 @@ const FormA = () => {
     const [activeTrap, setTrap] = useState(false);
 
     const mountTrap = () => {
+        // console.log("mountTrap called, value = ", activeTrap);
         setTrap(true);
     }
 
     const unmountTrap = () => {
+        // console.log("unmountTrap called, value = ", activeTrap);
         setTrap(false);
     }
 
     function handleEscape(e) {
         if (e.key === "Escape") {
+            // console.log("Escape pressed in FocusTrap");
             setTrap(false);
             setPopUp(false);
         }
@@ -72,14 +89,13 @@ const FormA = () => {
             <h1>Hi there, I am an Accessible Form!</h1>
 
             <form onSubmit={handleSubmit}>
-                Name:
+                <label htmlFor="fullname">Name: </label>
                 <input id="fullname" name="fullname" type="text" onChange={handleChange} onKeyDown={handleEnter} autoComplete="off" />
 
                 <br />
 
                 <label htmlFor="email">Email: </label>
                 <input aria-required="true" id="email" name="email" type="text" onChange={handleChange} onKeyDown={handleEnter} autoComplete="off" />
-                
                 <br />
 
                 {/* <label> Preferred Framework:  </label> */}
@@ -96,8 +112,8 @@ const FormA = () => {
                 <br />
 
                 {/* <span id="cityLabel" aria-label="Please select your city">Your city:</span> */}
-{/* 
-                Your city:
+
+                {/* Your city:
                 <span aria-label="Your city" onChange={handleChange} onKeyDown={handleEnter}>
                     <input aria-label="Hyderabad" name="city" type="radio" value="Hyderabad" />Hyderabad
                     <input aria-label="Bangalore" name="city" type="radio" value="Bangalore" />Bangalore
@@ -126,9 +142,15 @@ const FormA = () => {
 
             </form>
             <br />
+            {/* 
+                <div>
+                    <p>trap value = {activeTrap.toString()}</p>
+                    <br />
+                </div> */}
 
             <div role="dialog" aria-label="Are you sure you want to submit? Click Yes to confirm, No to go back to the form"
                 onKeyDown={handleEscape} className={popUp ? "popup" : ""}>
+                {/* className={popUp ? "form-popup" : ""} */}
                 {activeTrap && (
                     <FocusTrap
                     >
@@ -141,6 +163,11 @@ const FormA = () => {
                     </FocusTrap>
                 )}
             </div>
+
+            {/* {formSubmit && <div aria-live="polite">
+                Form has been submitted.
+            </div>} */}
+
         </div>
 
     );

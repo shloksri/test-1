@@ -7,6 +7,16 @@
   /* outline: 0; */
 }
 
+/* *:focus-visible {
+  outline-offset: 2px;
+  outline: 2px dashed blue;
+} */
+
+/* fieldset {
+  border: 0 none;
+} */
+
+
 .tab-example {
   position: absolute;
   left: 40%;
@@ -26,7 +36,8 @@
 
 .popup {
   margin: auto;
-  background: rgb(255, 255, 255);
+  /* background: rgb(255, 255, 255); */
+  background: transparent;
   width: 90%;
   height: 90vh;
   padding: 5px;
@@ -37,12 +48,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.9;
+  /* opacity: 0.9; */
 
 }
 
 .popup-content {
-  background-color: #dedbdb;
+  background-color: #fff;
   padding: 25px;
   opacity: 1;
   border: 1px solid black;
